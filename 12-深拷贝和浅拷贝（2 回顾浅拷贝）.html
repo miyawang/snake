@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // copy => 拷贝 、复制
+
+    // 根据obj使用浅拷贝一个对象出来：
+    var o = {
+      name: 'youyou',
+      age: 23,
+      gender: 'male',
+
+      car: {
+        brand: '二手奥拓'
+      }
+    }
+
+    // DRY：Don't Repeat Yourself 别复制粘贴你的代码
+
+    // 封装了一个函数，传递要要拷贝的参数，返回拷贝后的结果
+    function copy(obj) {
+      var target = {}
+
+      // 浅拷贝：就是将对象中的属性，一个个的设置到目标对象中，即可
+      for (var k in obj) {
+        target[k] = obj[k]
+      }
+
+      return target
+    }
+    
+    // 根据对象o，拷贝ret出来
+    var ret = copy(o)
+    console.log('拷贝出来的对象：', ret)
+    
+    // 浅拷贝对于 对象类型的属性来说，会相互影响（修改拷贝后的对象的属性，会影响到原始对象中的对应属性）
+    ret.car.brand = '宝马'
+
+    console.log('原始对象o中的brand为：', o.car.brand)
+
+  </script>
+</body>
+
+</html>

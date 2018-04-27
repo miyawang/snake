@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    div,
+    p {
+      height: 100px;
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+
+  <p></p>
+  <p></p>
+  <p></p>
+
+  <script>
+    // 面向过程方式：
+    // 思路：
+    // 1 获取到页面中的div元素
+    // 2 遍历div集合
+    // 3 分别为每一个div元素设置边框
+    var dvs = document.getElementsByTagName('div')
+    for (var i = 0; i < dvs.length; i++) {
+      dvs[i].style.border = '1px solid hotpink'
+    }
+
+    // 获取p元素
+    var ps = document.getElementsByTagName('p')
+    for (var i = 0; i < ps.length; i++) {
+      ps[i].style.border = '1px solid deeppink'
+    }
+  </script>
+</body>
+
+</html>

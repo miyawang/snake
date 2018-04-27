@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 创建对象的方式：
+    // 1 构造函数
+    // 2 对象字面量
+
+    // var obj = new Object()
+    // obj.name = 'pengpeng'
+    // obj.age = 17
+    // obj.gender = 'male'
+    // console.log(obj)
+
+    // var pp = {
+    //   name: 'pengpeng',
+    //   age: 18,
+    //   gender: 'male'
+    // }
+    // console.log(pp)
+
+    // 如果需要批量的创建对象，使用 对象字面量 就很繁琐了~
+    // var youyou = {
+    //   name: '悠悠',
+    //   age: 30,
+    //   gender: 'male'
+    // }
+
+    // 工厂函数：能够实现批量的创建对象~
+    // 问题：无法区别到底是哪种类型的对象
+    // function createPerson() {
+    //   var obj = {
+    //     name: 'pengpeng',
+    //     age: 18,
+    //     gender: 'male'
+    //   }
+    //   return obj
+    // }
+    
+    function createPerson(name, age, gender) {
+      var obj = {
+        name: name,
+        age: age,
+        gender: gender
+      }
+      return obj
+    }
+
+    var pp = createPerson('鹏鹏', 18, 'male')
+    var pp1 = createPerson('悠悠', 30, 'male')
+    var pp2 = createPerson('倩倩', 18, 'female')
+    console.log(pp, pp1, pp2)
+  </script>
+</body>
+
+</html>

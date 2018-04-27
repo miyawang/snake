@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // copy => 拷贝 、复制
+
+    // 根据obj使用浅拷贝一个对象出来：
+    var o = {
+      name: 'youyou',
+      age: 23,
+      gender: 'male',
+
+      car: {
+        brand: '二手奥拓'
+      }
+    }
+
+    // 封装一个函数，用于实现深拷贝
+    function deepCopy(obj) {
+      var target = {}
+
+      // 注意：引用类型的问题
+      for (var k in obj) {
+        if (typeof obj[k] === 'object') {
+          // 如果是对象类型，应该继续拷贝这个对象中的所有属性
+          // 这个对象是谁??? obj[k]
+          // 为什么要这么做??? 因为调用 deepCopy(obj[k]) 就是在拷贝传递过来的参数对象
+          target[k] = deepCopy(obj[k])
+        } else {
+          // 如果是普通类型，直接复制即可
+          target[k] = obj[k]
+        }
+      }
+
+      return target
+    }
+
+    // 深拷贝出来的对象：
+    var ret = deepCopy(o)
+    console.log(ret)
+
+    ret.car.brand = '布佳迪'
+
+    console.log('原始对象的值:', o.car.brand)
+
+  </script>
+</body>
+
+</html>
