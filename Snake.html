@@ -18,108 +18,92 @@
 
 <body>
   <div id="map"></div>
+  <script src="food.js"></script>
+  <script src="snake.js"></script>
   <script>
     // 1定义一个map 限定蛇的活动范围
-    // 2食物 宽 高 颜色 坐标 方法是渲染到页面
-    function Food(options) {
-      //构造函数来创建
-      options = options || {};
-      this.width = options.width || 20;
-      this.height = options.height || 20;
-      this.bgColor = options.bgColor || '#f99'
-      this.x = options.x || 0;
-      this.y = options.y || 0;
-    }
-
-    var food = new Food({ bgColor: '#f00' });
-    //创建实例对象 
-    // console.log(food.bgColor);
-    Food.prototype.render = function () {
-      // 在构造函数的原型对象中创建render方法 这样可以实现复用 渲染就是 为页面添加元素
-      var foodElement = document.createElement('div'); //创建元素 
-      foodElement.style.width = this.width + 'px';
-      foodElement.style.height = this.height + 'px';
-      foodElement.style.backgroundColor = this.bgColor;
-      foodElement.style.position = 'absolute';
-      //因为要用到x 和 y坐标 所以 定义下构造函数的x 和 y坐标
-      //但是 由于自上而下解析  所以 把坐标放在前面
-      this.x = parseInt(Math.random() * (map.offsetWidth / this.width));
-      this.y = parseInt(Math.random() * (map.offsetHeight / this.height));
-      foodElement.style.left = this.x * this.width + 'px';
-      foodElement.style.top = this.y * this.height + 'px';
-      // 为元素添加内容
-      map.appendChild(foodElement);
-      // 追加到map
-    }
-    food.render();
-    //因为是在实例对象的原型对象中添加的render方法
-    // 所以 可以用实例对象直接调用该方法
-    // 3蛇 宽 高 颜色 坐标 蛇头 蛇身 方法：渲染 动起来（最后一个作为第一个）
-
-    function Snake(options) {
-      options = options || {};
-      this.width = options.width || 20;
-      this.height = options.height || 20;
-      this.headColor = options.headColor || '#0f0';
-      this.bodyColor = options.bodyColor || '#00f';
-      //因为蛇头和蛇身的颜色不一样
-      this.direction = options.direction || 'right';
-      // 确定默认移动方向
-      this.body = [{ x: 2, y: 0 }, { x: 1, y: 0 }, { x: 0, y: 0 }];
-      //给蛇设定默认坐标
-    }
-    Snake.prototype.render = function (target) {
-      //新建元素 因为是渲染每一个蛇节 所以 要用到for来遍历
-      for (var i = 0; i < this.body.length; i++) {    // this.body.length是构造函数中 body里传入的参数个数
-        var span = document.createElement('span');
-        span.style.width = this.width + 'px';
-        span.style.height = this.height + 'px';
-        span.style.backgroundColor = (i === 0)? this.headColor : this.bodyColor;
-        span.style.position = 'absolute';
-        span.style.left = this.body[i].x * this.width + 'px';
-        span.style.top = this.body[i].y * this.height + 'px';
-        target.appendChild(span); //target 是传入哪个参数 就在哪个参数后面渲染
-      }
-    }
+    var map = document.getElementById('map');
+   
+    // var snake = new Snake();  //创建实例对象
+    // snake.render(map); //调用渲染 让蛇出现在页面中 
     
-    //给原型对象添加move方法 以便调用
-    Snake.prototype.move = function (target){
-      var newNode = {x:this.body[0].x,y:this.body[0].y}
-      // 新增的节 出现在蛇的第一节 也就是蛇头
-      switch (this.direction) {
-        case 'right':
-        newNode.x++;
-        break;
-        case 'left':
-        newNode.x--;
-        break;
-        case 'up':
-        newNode.y--;
-        break;
-        case 'down':
-        newNode.y--
-        break;
-      }
-
-      this.body.unshift(newNode);
-      //把新的节添加到第一个位置
-      this.body.pop();
-      //将最后一节 从蛇中删除 body中
-      console.log(this.body[this.body.length-1]);
-      
-
-      this.render(target);
-      //重新格局最新的位置 渲染蛇 每次重新渲染蛇的时候
-      // 都要将原来的蛇节对应的元素从页面中删除
-    }
-
-    var snake = new Snake();  //创建实例对象
-    snake.render(map); //调用渲染 让蛇出现在页面中 
+    // var food = new Food();
+    // food.render(map);
     // 设置定时器 
-    setInterval(function(){
-      snake.move(map);
-    },500)
+    // setInterval(function () {
+    //   snake.move(map);
+    // }, 500)
+    
+    // 游戏对象 1.创建构造函数
+    function Game(map){
+      //添加食物对象
+      this.food = new Food();
+      //添加蛇
+      this.snake = new Snake();
+      //添加map地图属性
+      this.map = map;
+    }
+    // // 2 给原型对象中添加开始游戏的方法
+    Game.prototype.start = function(){
+      var that = this;
+      this.food.render(this.map);
+      this.snake.render(this.map);
+      document.addEventListener('keyup',function(event){
+        switch (event.keyCode) {
+          case 37:
+          if (that.snake.direction === 'right') {
+              return
+            }
+          that.snake.direction = 'left';
+          break;
+          case 38:
+          if (that.snake.direction === 'down') {
+              return
+            }
+          that.snake.direction = 'up';
+          break;
+          case 39:
+          if (that.snake.direction === 'left') {
+              return
+            }
+          that.snake.direction = 'right';
+          break;
+          case 40:
+          if (that.snake.direction === 'up') {
+              return
+            }
+          that.snake.direction = 'down';
+          break;
+        }
+      })
+    //   //3.让蛇动起来
+     
+    //   //4 蛇吃食物的逻辑--应该放到蛇对象的move方法中来实现
 
+    //   // 5 蛇撞墙后 游戏结束
+    // }
+    var timerId = setInterval(function(){
+      that.snake.move(this.map,this.food)
+      var head = that.snake.body[0];
+      if (head.x < 0 || head.y < 0 || head.x > ((that.map.offsetWidth / that.snake.width) - 1) || head.y > ((that.map.offsetHeight / that.snake.height) - 1)) {
+        alert('Game over')
+        clearInterval(timerId)
+        
+      }
+      //判断自己吃自己
+      for (var i = 4; i < that.snake.body.length;i++){
+        //判断蛇头有没有与蛇节重合 如果重合了 说明吃到自己了 游戏结束
+         if (head.x === that.snake.body[i].x && head.y === that.snake.body[i].y) {
+           alert('Game Over,自己吃自己')
+           clearInterval(timerId)
+         }
+      }
+     },200)
+    }
+    // //创建游戏对象的时候 指定地图
+    var g = new Game(map)
+    // //调用该方法 让游戏开始
+    g.start()
   </script>
 </body>
 
