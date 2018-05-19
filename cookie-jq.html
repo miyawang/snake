@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="jquery-1.10.2.js"></script>
+    <script src="jquery.cookie.js"></script>
+    <script>
+        //jq操作cookie 
+        //$.cookie(k, v);  设置
+        //$.cookie(k);  取值
+        // $.cookie(k, v ,有效期) 过期数据自动销毁
+
+        //cookie中数据 默认是浏览器窗口关闭，数据销毁
+
+        $.cookie('name', '狗蛋');
+        $.cookie('age', 33);
+        $.cookie('hobby', 'eat');
+
+        $.cookie('sex', 'm', {expires: 7 }); //单位 天
+        $.cookie('tel', '119',{expires: 3});
+
+        $.cookie('tel', null, {expires: -1}); //设置数据过期，会被自动删除  
+
+        console.log($.cookie('name'));
+        
+    </script>
+</body>
+</html>
