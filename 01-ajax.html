@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        .info {
+            width: 500px;
+            height: 200px;
+            border: 1px solid  red;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>AJAX!</h1>
+    <p>ajax可以在不刷新情况，向服务器发送请求，局部更新数据</p>
+    <input type="text" > 
+    <button>ajax发送请求</button>
+    <div class="info"></div>
+    <script>
+       
+        document.querySelector('button').onclick = function () {
+            //1- 创建以XMLHttpRequest对象  xhr对象就可以向服务器发请求
+            var  xhr = new XMLHttpRequest(); 
+            //2- ajax请求服务器 也需要遵守http协议
+    
+            //2-1-请求行 
+            //xhr.open(请求方式，请求地址，是否异步)
+            xhr.open('get', './01-ajax.php', false );
+            //2-2-请求头
+            xhr.setRequestHeader('content-type','text/html');
+            //2-3-请求主体
+             xhr.send(null); //会把请求发送出去
+            //量够
+            //3-接受服务器的响应          
+            //mouseenter mouseleave
+            // xhr.onreadystatechange = function () {
+            //     if (xhr.readyState == 4 && xhr.status == 200 ) {
+            //         //获取服务器返回数据 获取响应主体中内容
+            //         var r = xhr.responseText;
+            //         console.log(r);
+            //         document.querySelector('.info').innerHTML = r;
+            //     }
+            // }
+
+            console.log(xhr.responseText);
+            //ajax默认就是异步 
+            console.log('我是ajax后面要执行代码');
+
+
+        }
+     
+
+
+    </script>
+</body>
+</html>
