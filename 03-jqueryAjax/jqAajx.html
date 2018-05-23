@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .info {
+            width: 500px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <button>$.get()</button>
+    <button>$.post()</button>
+    <button>$.getJSON()</button>
+    <button>$.getScript()</button>
+    <button>load()</button>
+
+    <div class="info"></div>
+    <script src="../jquery-1.12.4.min.js"></script>
+    <script>
+        //$.ajax({
+        //  type:'get',
+        //  url:
+        //  data: {},
+        //  timeout:2000,
+        //  dataType: 'text',
+        //  beforeSend: function () {},
+        //  success: function () {},
+        //  error: function () {},
+        //  complete: function () {},
+        //});
+
+
+        // $.get()  
+            // $.ajax({
+            //     type:'get',
+            //     url: 
+            //     data:
+            // })
+        // $.post();
+            // $.ajax({
+            //     type: 'post',,
+            //     url: 
+            //     dataType:             
+            // })
+        // $.getJSON();  //JSON.parse();
+            // $.ajax({
+            //     type: 'post',,
+            //     url: 
+            //     dataType:'json'             
+            // })
+        // $.getScript(); //从服务器js文件
+        // load(); 从服务器请求一个HTML文件，并且可以把添加到指定DOM元素中
+        
+        //$.get
+        $('button').eq(0).click(function () {
+            $.get('./test.php', function (info) {
+                console.log(info);
+            })
+        })
+        //$.post
+        $('button').eq(1).click(function () {
+            $.post('./test.php', function (info) {
+                console.log(info);
+            })
+        })
+        //$.getJSON
+        $('button').eq(2).click(function () {
+            $.getJSON('./json.php', function (info) {
+                console.log(info);
+                
+            })
+        })
+
+        $('button').eq(3).click(function () {
+            $.getScript('./test.js', function () {
+                song(); //请求服务器js文件，并且调用内部方法 
+            })
+        })
+        //从服务器请一个html页面，把页面内容添加到指定盒子中
+        $('button').eq(4).click(function () {
+            $('.info').load('./test.html');
+        });
+      
+
+
+
+
+    </script>
+</body>
+</html>
