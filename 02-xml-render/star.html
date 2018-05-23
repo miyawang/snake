@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../table.css">
+</head>
+<body>
+    <button>获取数据</button>
+    <table>
+
+    </table>
+    <script src="../jquery-1.12.4.min.js"></script>
+    <script>
+        //点击按钮，获取明星数据，并渲染
+        $('button').click(function (){
+            $.ajax({
+                url: './star.php',
+                dataType: 'xml', //会将返回xml数据解析成DOM
+                success: function (info) {
+                    console.log(info); //root
+                    var items = info.querySelectorAll('item');
+                    //console.log(items);
+                    //console.log( items[0].querySelector('name').innerHTML); //用innerHTML来获取
+                    var str = '';
+                    for (var i = 0; i < items.length; i++) {
+                        var name = items[i].querySelector('name').innerHTML;
+                        var photo = items[i].querySelector('photo').innerHTML;
+                        var age = items[i].querySelector('age').innerHTML;
+                        var sex = items[i].querySelector('sex').innerHTML;
+                        var album = items[i].querySelector('album').innerHTML;
+                        str += '<tr>';
+                            str += '<td>' +name + '</td>';
+                            str += '<td>' +age + '</td>';
+                            str += '<td>' +sex + '</td>';
+                            str += '<td>' +photo + '</td>';
+                            str += '<td>' +album + '</td>';                           
+                        str+= '</tr>';
+                    }
+
+                    $('table').html(str); //innerHTML                
+                    
+                }
+            });
+        })
+    </script>  
+</body>
+</html>
