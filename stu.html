@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../table.css">
+</head>
+<body>
+    <button>获取数据</button>
+    <table>
+    </table>
+    <script src="ajax.js"></script>
+    <script>
+        // 1-点击按钮，向后他发送请求，获取学数据
+        // 2-获取到后他返回的数据，渲染在页面中
+
+        document.querySelector('button').onclick = function () {
+            $.ajax({
+                url: './stu.php',
+                callback: function (info) {
+                    info = JSON.parse(info);
+                    console.log(info);
+                }               
+            })
+        }
+    </script>
+</body>
+</html>
