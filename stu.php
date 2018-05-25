@@ -14,4 +14,6 @@
     // echo '</pre>';
     //echo '呵呵';
     echo json_encode($data);
+
+    sleep(3);
 ?>

@@ -6,25 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../table.css">
+    <style>
+        img {
+            position: absolute;
+            left: 43%;
+            top: 100px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <button>获取数据</button>
+    <img src="load.gif" alt="">
     <table>
     </table>
-    <script src="ajax.js"></script>
+    <script src="../jquery-1.12.4.min.js"></script>
     <script>
         // 1-点击按钮，向后他发送请求，获取学数据
         // 2-获取到后他返回的数据，渲染在页面中
-
-        document.querySelector('button').onclick = function () {
-            $.ajax({
-                url: './stu.php',
-                callback: function (info) {
+        $('button').click(function () {
+            $.ajax({               
+                url: './stu.php',   
+                beforeSend:function () {//请求发送之前
+                    $('img').show();
+                },           
+                success: function (info) {
                     info = JSON.parse(info);
                     console.log(info);
-                }               
-            })
-        }
+
+                    var str = '';
+                    for( var i = 0; i < info.length; i++) {
+                        str += '<tr>';
+                        str += '<td>' + info[i].name + '</td>';
+                        str += '<td>' + info[i].nickname + '</td>';
+                        str += '<td>' + info[i].age+ '</td>';
+                        str += '<td>' + info[i].tel + '</td>';
+                        str += '<td>' + info[i].sex + '</td>';
+                        str += '<td>' + info[i].photo + '</td>';
+                        str += '</tr>';
+                    }
+
+                    console.log(str);
+
+                    //把数据渲染到页面中
+                    document.querySelector('table').innerHTML = str;
+                },
+                complete: function () { //请求完成后处理代码
+                    $('img').hide();
+                }
+            });
+        });
+       
     </script>
 </body>
 </html>
