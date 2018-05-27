@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="../assets/vendors/nprogress/nprogress.css">
   <link rel="stylesheet" href="../assets/css/admin.css">
+  <!-- 分页样式 -->
+  <link rel="stylesheet" href="../assets/vendors/pagination/pagination.css">
+  
   <script src="../assets/vendors/nprogress/nprogress.js"></script>
 </head>
 <body>
@@ -40,13 +43,9 @@
           <button class="btn btn-warning btn-sm">批量拒绝</button>
           <button class="btn btn-danger btn-sm">批量删除</button>
         </div>
-        <ul class="pagination pagination-sm pull-right">
-          <li><a href="#">上一页</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">下一页</a></li>
-        </ul>
+        <!-- 分页的容器 -->
+        <!--  pull-right 有浮动 -->
+       <div class="page-box pull-right"></div>
       </div>
       <table class="table table-striped table-bordered table-hover">
         <thead>
@@ -86,7 +85,9 @@
   <script src="../assets/vendors/jquery/jquery.js"></script>
   <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
   <script src="../assets/vendors/template/template-web.js"></script>
-  <script>NProgress.done()</script>
+  <!-- 分页插件 -->
+  <script src="../assets/vendors/pagination/jquery.pagination.js"></script>
+  <!-- <script>NProgress.done()</script> -->
   <script>
        
        $(function () {
@@ -97,26 +98,59 @@
             rejected: '拒绝',
             trashed: '回收站'
           }
+
           //翻译   state[held]  state[approved]
-          //获取第一页评论数据渲染在页面中
-          $.ajax({
-            type: 'get',
-            url: './comment/comGet.php',
-            data: {
-              page: 3,
-              pageSize: 10
-            },
-            dataType: 'json',
-            success: function (info) {
-              console.log(info);   //数组
-              var  obj = {
-                list: info,
-                state: state
+         
+          //1-获取评论数据并渲染
+          function render(page, pageSize) {
+            $.ajax({
+              type: 'get',
+              url: './comment/comGet.php',
+              data: {
+                page: page || 1,
+                pageSize: pageSize || 10
+              },
+              dataType: 'json',
+              success: function (info) {
+                console.log(info);   //数组
+                var  obj = {
+                  list: info,
+                  state: state
+                }
+                //组装数据和模板
+                $('tbody').html(template('tmp', obj));
               }
-              //组装数据和模板
-              $('tbody').html(template('tmp', obj));
-            }
-          })
+            })
+          }
+          //2-获取第一页评论数据渲染在页面中
+          render();
+          //3-生成分页
+          function setPage() {
+            //1- 获取数据库中数据的总数
+            $.ajax({
+              url: './comment/comTotal.php',
+              dataType: 'json',
+              success: function (info) {
+                console.log(info);
+                //生成分页插件
+                $('.page-box').pagination(info.total, {
+                  prev_text:'上一页',
+                  next_text:'下一页',
+                  num_display_entries: 5, //连续主体个数
+                  num_edge_entries: 1,
+                  load_first_page:false, //初始化完成不执行回调函数
+                  callback: function (index) {
+                    //渲染对应的页面
+                    //索引值比页码小1 
+                    render(index + 1);
+                  }
+                });
+              }
+            })
+          }
+
+          setPage();
+        
 
        })
   </script>
