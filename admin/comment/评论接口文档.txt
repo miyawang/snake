@@ -1,0 +1,28 @@
+1- 获取评论数据接口：
+    1- 请求方式： get
+    2- 请求的地址： ./comment/comGet.php
+    3- 请求参数：
+        page:  页码
+        pageSize:每页数据条数
+    4-返回数据格式 ：json
+        示例：...
+
+2- 获取评论总数接口：
+    1-请求方式： get  post 
+    2- 请求的地址： ./comment/comTotal.php
+    3- 请求参数：无       
+    4-返回数据格式 ：json
+        示例：...
+
+3- 批准评论功能
+    1-请求方式： get 
+    2- 请求的地址： ./comment/comApproved.php
+    3- 请求参数：id       
+    4- 返回数据格式 ：无 
+        示例：...
+4- 删除评论接口
+    1-请求方式： get 
+    2- 请求的地址： ./comment/comDel.php
+    3- 请求参数：id       
+    4- 返回数据格式 ：json
+        {total: 500} 返回的数据库剩余数据总数
