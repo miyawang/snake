@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 多背景语法：
+            每个背景按照标准语法去写，多个背景之间使用逗号隔开
+            先写背景在上面，后写在下面
+        */
+        .box {
+            width: 623px;
+            height: 417px;
+            border: 1px solid red;
+            margin: 100px auto;
+            background: url(images/bg1.png) top left no-repeat,
+                        url(images/bg2.png) top right no-repeat,
+                        url(images/bg3.png) bottom right no-repeat,
+                        url(images/bg4.png) bottom left no-repeat,
+                        url(images/baby0.jpg) center center no-repeat,
+                        url(images/bg5.png) center center no-repeat
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
