@@ -1,0 +1,48 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /*
+            3d变换：
+            旋转：
+                rotateX  沿着X轴旋转
+                rotateY  沿着Y轴旋转
+                rotateZ  沿着Z轴旋转
+             位移：
+                translateX 沿着x位移
+                translateY 沿着y位移
+                translateZ 沿着z位移
+
+
+             透视：
+                会产生近大远小效果
+                1- 要设置给变换元素父盒子
+                2- 透视的值越小效果越明显
+                3- 透视值含义： 设置的 用户眼睛 和 屏幕距离
+        */
+        .box {
+            width: 300px;
+            height: 226px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            perspective: 110px; /*透视*/
+        }
+
+        img {
+            /*过渡*/
+            transition: transform 4s;
+        }
+
+        .box:hover img {
+            transform: rotateX(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="images/x.jpg" alt="">
+    </div>
+</body>
+</html>
