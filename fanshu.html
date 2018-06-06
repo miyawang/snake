@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>翻书</title>
+  <style>
+    body {
+      perspective: 1500px;
+      overflow: hidden;
+    }
+  .content {
+    height: 400px;
+    width: 300px;
+    /* border: 1px solid #f00; */
+    position: relative;
+    margin: 100px auto;
+    transform-style: preserve-3d;
+    transform: rotateX(20deg) rotateY(-20deg);
+  }
+  .content span {
+    height: 100%;
+    width: 100%;
+    font-size: 80px;
+    text-align: center;
+    line-height: 300px;
+    border:1px solid #0f0;
+    position: absolute;
+    /* background-image: radial-gradient(150px 150px at 0px 0px,#ff0,#f0f); */
+    background-image: linear-gradient(to top right,#ff0,#f0f,#00f);
+    /* transform: rotate(-5deg); */
+    transform-origin: left;
+    transition: transform 2s;
+ }
+ /* span:nth-child(1){
+   transform:rotateY(0deg) ;
+ }
+ span:nth-child(2){
+   transform:rotateY(3deg) ;
+ }
+ span:nth-child(3){
+   transform:rotateY(6deg) ;
+ }
+ span:nth-child(4){
+   transform:rotateY(9deg);
+ }
+ span:nth-child(5){
+   transform:rotateY(12deg) ;
+ }
+ span:nth-child(6){
+   transform:rotateY(15deg);
+ }
+ span:nth-child(7){
+   transform:rotateY(18deg) ;
+ } */
+ /* .content:hover span:nth-child(1) {
+   transform: rotateY(-180deg);
+   transition-delay: .5s;
+ }
+ .content:hover span:nth-child(2) {
+   transform: rotateY(-178deg);
+   transition-delay: 1.5s;
+ }
+ .content:hover span:nth-child(3) {
+   transform: rotateY(-176deg);
+   transition-delay: 3s;
+ }
+ .content:hover span:nth-child(4) {
+   transform: rotateY(-174deg);
+   transition-delay: 4s;
+ }
+ .content:hover span:nth-child(5) {
+   transform: rotateY(-172deg);
+   transition-delay: 5s;
+ }
+ .content:hover span:nth-child(6) {
+   transform: rotateY(-170deg);
+   transition-delay: 6s;
+ } */
+
+  </style>
+</head>
+<body>
+  <div class="content">
+    <span>A</span> 
+    <span>B</span>
+    <span>C</span>
+    <span>D</span>
+    <span>E</span>
+    <span>F</span>
+    <span>G</span>   
+       
+  </div>
+  <script>
+  var spans = document.querySelectorAll('span');
+  spans.forEach(function(v,i,arr) {
+    v.style.transform = 'rotateY('+ i*3 + 'deg)';
+  });
+  document.body.onmouseenter = function(){    
+    spans.forEach(function(v,i,arr){
+      v.style.transform = 'rotateY(' + (-180 + i * 2) + 'deg)';
+      v.style.transitionDelay = (i + 0.5)+'s'; 
+      if (i == (spans.length - 1)) {
+        i == 0;
+      } 
+    })
+  }
+  document.body.onmouseleave = function(){
+    spans.forEach(function(v,i,arr){
+      v.style.transform = 'rotateY('+ i*3 + 'deg)';
+      v.style.transitionDelay = 0 +'s';
+    })
+  }
+  </script>
+</body>
+</html>
