@@ -1,0 +1,28 @@
+<!Doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      perspective: 500px;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      margin: 100px auto;
+      /*过渡*/
+      transition: transform 1s;
+    }
+    /* translateZ需要配合透视使用 */
+    .box:hover {
+      transform: translateZ(520px);
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>
