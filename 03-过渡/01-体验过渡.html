@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+
+    /*
+      过渡： transition
+      由 一种状态 贱贱 的过渡另一种状态
+
+    */
+
+    .box {
+      width: 300px;
+      height: 200px;
+      border: 1px solid #000;
+      background-color: pink;
+      margin:100px auto;
+      /*过渡*/
+      /*transition: width 1s, background 2s, border-radius 1s;*/
+      transition: all 1s;
+    }
+
+    .box:hover {
+      width: 1000px;
+      background-color: red;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>
