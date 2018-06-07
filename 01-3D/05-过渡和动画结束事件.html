@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 100px auto;
+
+            /*过渡*/
+            transition: transform 1s;
+        }
+        .box:hover {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        //过渡结束事件
+        //transitionend
+        //动画结束事件
+        //animationend
+
+//        document.querySelector('.box').addEventListener('transitionend', function (){
+//            alert(100);
+//        })
+// 不支持on写法
+//        document.querySelector('.box').ontransitionend = function () {
+//            alert(200);
+//        }
+
+//        $('.box').on('transitionend', function () {})
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 560px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            position: relative;
+            /*border: 3px solid red;*/
+        }
+
+        ul {
+            list-style: none;
+        }
+        li {
+            float: left;
+            width: 112px;
+            height: 300px;
+            /*border: 1px solid red;*/
+            position: relative;
+            /*子盒子3d*/
+            transform-style: preserve-3d;
+            /*辅助*/
+            /*transform:rotateX(10deg) rotateY(-23deg);*/
+            transition: transform 1s; /*过渡*/
+        }
+        span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            font-size:90px;
+        }
+
+        span:nth-child(1) {
+            background-color: cornflowerblue;
+            transform: translateZ(150px);
+        }
+        
+        span:nth-child(2) {
+            background-color: crimson;
+            transform: translateY(-150px) rotateX(90deg);
+        }
+
+        span:nth-child(3) {
+            background-color: gold;
+            transform: translateZ(-150px) rotateX(180deg);
+        }
+
+        span:nth-child(4) {
+            background-color: green;
+            transform: translateY(150px) rotateX(-90deg);
+        }
+
+        /*设置背景： 所有li的第一个span的背景是第一张图片*/
+        /* 获取所有li中的 第一个span*/
+        li span:nth-child(1) {
+            background: url(images/1.jpg);
+        }
+        
+        li span:nth-child(2) {
+            background:url(images/2.jpg);
+        }
+
+        li span:nth-child(3) {
+            background:url(images/3.jpg);
+        }
+
+        li span:nth-child(4) {
+            background:url(images/4.jpg);
+        }
+
+        /*背景定位： 每个li的背景定位不同*/
+        /*获取第2个li中所有的span*/
+        li:nth-child(2) span {
+            background-position: -112px 0px;
+        }
+
+        li:nth-child(3) span {
+            background-position: -224px 0px;
+        }
+
+        li:nth-child(4) span {
+            background-position: -336px 0px;
+        }
+
+        li:nth-child(5) span {
+            background-position: -448px 0px;
+        }
+
+        .left,
+        .right {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -40px;
+            width: 40px;
+            height: 80px;
+            background: rgba(255, 0, 0, 0.8);
+            text-align: center;
+            line-height: 80px;
+            font-size:50px;
+            color: #fff;
+            text-decoration: none;
+            font-family:'宋体';
+        }
+
+        .right {
+            left: auto;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+        </ul>
+        <a class="left" href="javascript:;"> < </a>
+        <a class="right" href="javascript:;"> > </a>
+    </div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        //轮播图
+        // 轮播图 动 因为 index 发生了变化
+        // 那些行为会让index发生变化？ 左右按钮， 定时器...
+
+        var index = 0; //记录当前轮播图片
+        var isEnd = true; //记录动画是否结束
+
+        //右按钮
+        $('.right').click(function () {
+            //判断动画是否结束
+            if (!isEnd) { //如果上次动画没结束，下次动画不会开始
+                return;
+            }
+
+            //动画开始
+            isEnd = false;
+            //index自己
+            index++;
+            // 轮播图 根据index的值进行 旋转
+            // index  1  -90  2 -180 3 - 270
+            var r = index * (-90);
+            $('li').css('transform', 'rotateX(' + r + 'deg)');
+            //设置延迟
+            $('li').each(function (index, ele) {
+                $(ele).css('transitionDelay', index*0.2 + 's');
+            })
+        })
+
+        //左按钮
+        $('.left').click(function () {
+            //判断动画是否结束
+            if (!isEnd) { //如果上次动画没结束，下次动画不会开始
+                return;
+            }
+
+            //动画开始
+            isEnd = false;
+            //index自己
+            index--;
+            // 轮播图 根据index的值进行 旋转
+            // index  1  -90  2 -180 3 - 270
+            var r = index * (-90);
+            $('li').css('transform', 'rotateX(' + r + 'deg)');
+            //设置延迟
+            $('li').each(function (index, ele) {
+                $(ele).css('transitionDelay', index*0.2 + 's');
+            })
+        })
+
+
+        //本次动画没有结束，下次点击无效
+        //最后一个li的动画结束表示整个动画结束了
+        $('li:last-child').on('transitionend', function () {
+            //动画结束了
+            isEnd = true;
+        })
+    </script>
+
+</body>
+</html>

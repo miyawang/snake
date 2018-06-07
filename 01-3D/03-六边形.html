@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            perspective: 800px;
+        }
+
+        .box {
+            width: 300px;
+            height: 150px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            position: relative;
+
+            /*子盒子保持3d*/
+            transform-style:  preserve-3d;
+
+            /*辅助*/
+            transform: rotateX(-18deg) rotateY(716deg);
+        }
+
+        span {
+            position: absolute;
+            left: 0px;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 150px;
+            font-size:90px;
+            /*transform: translateZ(300px);*/
+        }
+        
+        /*选中每个span*/
+        
+        span:nth-child(1) {
+            background-color: green;
+            transform: translateZ(300px);
+        }
+
+        span:nth-child(2) {
+            background-color: hotpink;
+            transform: rotateY(60deg) translateZ(300px);
+        }
+
+        span:nth-child(3) {
+            background-color: red;
+            transform: rotateY(120deg) translateZ(300px);
+        }
+        
+        span:nth-child(4) {
+            background-color: yellow;
+            transform: rotateY(180deg) translateZ(300px);
+        }
+
+        span:nth-child(5) {
+            background-color: blueviolet;
+            transform: rotateY(240deg) translateZ(300px);
+        }
+
+        span:nth-child(6) {
+            background-color: coral;
+            transform: rotateY(300deg) translateZ(300px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+    </div>
+</body>
+</html>

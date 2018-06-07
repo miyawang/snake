@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            border: 1px solid #000;
+        }
+        .box {
+            width: 50px;
+            height: 50px;
+            margin: 250px auto;
+            background-color: red;
+
+            /*过渡*/
+            transition: transform 1s;
+        }
+
+        body:hover .box {
+            transform: rotate(720deg) translateX(500px) ;
+            /*transform: translateX(500px) rotate(720deg)  ;*/
+            /* 变换是， 第二个变换属性 会在第一个变换的基础之上进行变化
+                （坐标系方向有第一个变换属性决定）*/
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

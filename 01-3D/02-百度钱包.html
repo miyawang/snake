@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #daa520;
+        }
+        .money {
+            width: 300px;
+            height: 300px;
+            /*border: 1px solid #000;*/
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .money::before,
+        .money::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            border-radius: 50%;
+            background: url(images/bg.png);
+            transition: transform 1s;/*过渡*/
+
+            /*设置盒子背面是否可见*/
+            backface-visibility: hidden;
+        }
+        /*一分钱默认是反面 ，鼠标移上转到正面*/
+        /*今日在线默认是正面 ，鼠标移上转到反面*/
+        .money::before {
+            transform: rotateY(-180deg);
+        }
+        /*after层级高 */
+        .money::after {
+            /*left: 300px;*/
+            background-color: greenyellow;
+            background-position: right top;
+        }
+
+        /* hover 效果 选中*/
+
+        .money:hover::before {
+            transform: rotateY(0deg);
+        }
+
+        .money:hover::after {
+            transform: rotateY(180deg);
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="money"></div>
+</body>
+</html>
