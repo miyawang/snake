@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--设置视口-->
+    <!--meta:vp-->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        a,
+        a:hover {
+            text-decoration: none;
+            color: #333;
+        }
+        body {
+            background-color: #eee;
+        }
+        .layout {
+            width: 100%;
+            /*height: 1000px;*/
+            background-color: #fff;
+            margin: 0 auto;
+            max-width: 640px; /*最大宽度*/
+            min-width: 320px; /*最小宽度*/
+        }
+
+        .banner img {
+            width: 100%;
+        }
+
+        /*导航*/
+        .nav {
+            padding: 5px;
+        }
+
+        .item {
+            height: 90px;
+            background-color: cornflowerblue;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            /*伸缩布局*/
+            display: flex;
+        }
+
+        .item:nth-child(2) {
+            background-color: hotpink;
+        }
+
+        .item:nth-child(3) {
+            background-color: crimson;
+        }
+
+        .item:nth-child(4) {
+            background-color: #daa520;
+        }
+
+        .pub {
+            flex: 1;
+        }
+
+        .sub {
+            flex:2;
+        }
+
+        .sub a {
+            float: left;
+            width: 50%;
+            height: 50%;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            box-sizing: border-box;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            line-height: 44px;
+
+        }
+
+        .sub a:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .item:last-child .sub a {
+            width: 33.33%;
+        }
+
+        /*拓展*/
+        .extra {
+            display: flex;
+        }
+
+        .extra a {
+            flex: 1;
+        }
+
+        .extra a img {
+            width: 100%;
+        }
+
+        .f-nav {
+            height: 50px;
+            display: flex;
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+        }
+
+        .f-nav li {
+            flex: 1;
+            text-align: center;
+            line-height: 50px;
+            color: #999;
+        }
+        p {
+            text-align: center;
+            color: #ccc;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        移动端手机页面  兼容 320 -640 屏幕
+
+    -->
+    <div class="layout">
+        <!--banner-->
+        <div class="banner">
+            <img src="images/banner4.jpg" alt="">
+        </div>
+        <!--导航-->
+        <nav class="nav">
+            <div class="item">
+                <div class="pub"></div>
+                <div class="sub">
+                    <a href="javascript:;">海外酒店</a>
+                    <a href="javascript:;">团购</a>
+                    <a href="javascript:;">特惠酒店</a>
+                    <a href="javascript:;">客栈公寓</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="pub"></div>
+                <div class="sub">
+                    <a href="javascript:;">火车票</a>
+                    <a href="javascript:;">汽车票船票</a>
+                    <a href="javascript:;">国际机票</a>
+                    <a href="javascript:;">自驾专车</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="pub"></div>
+                <div class="sub">
+                    <a href="javascript:;">攻略身边</a>
+                    <a href="javascript:;">邮轮</a>
+                    <a href="javascript:;">周末游</a>
+                    <a href="javascript:;">保险签证</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="sub">
+                    <a href="javascript:;">门票玩乐</a>
+                    <a href="javascript:;">美食</a>
+                    <a href="javascript:;">全球购</a>
+                    <a href="javascript:;">礼品卡</a>
+                    <a href="javascript:;">出境WIFI</a>
+                    <a href="javascript:;">更多</a>
+                </div>
+            </div>
+        </nav>
+        <!--拓展-->
+        <div class="extra">
+            <a href="#">
+                <img src="images/extra_1.png" alt="">
+            </a>
+            <a href="#">
+                <img src="images/extra_1.png" alt="">
+            </a>
+        </div>
+        <!--底部-->
+        <ul class="f-nav">
+            <li>我的</li>
+            <li>客户端</li>
+            <li>下载</li>
+        </ul>
+        <p>网站地图 | ENGLISH | 电脑版</p>
+        <p>©2015 携程旅行</p>
+
+    </div>
+
+
+</body>
+</html>

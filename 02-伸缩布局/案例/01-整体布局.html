@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        .layout{
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        .aside{
+            background-color: hotpink;
+            flex:1;
+        }
+        .main{
+            background-color: cornsilk;
+            flex:4;
+        }
+        .main{
+            display: flex;
+            flex-direction: column; /*主轴从上向下*/
+            padding:10px;
+        }
+        .main *{
+            border-radius: 10px;
+        }
+        .nav{
+            flex:1;
+            background-color: plum;
+            margin-bottom:10px;
+        }
+        .content{
+            flex:3;
+            background-color: cornflowerblue;
+            display: flex;
+            padding:10px;
+        }
+        .c-left{
+            flex:4;
+            background-color:cyan;
+            margin-right:10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .c-right{
+            flex:1;
+            background-color:salmon;
+        }
+        .in{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <div class="aside"></div>
+        <div class="main">
+            <div class="nav"></div>
+            <div class="content">
+                <div class="c-left">
+                    <div class="in"></div>
+                </div>
+                <div class="c-right"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
