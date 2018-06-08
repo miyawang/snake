@@ -1,0 +1,108 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box {
+            width: 1000px;
+            margin: 50px auto;
+            background-color: #fff;
+        }
+        ul {
+            border: 1px solid red;
+        }
+
+        li {
+            width: 150px;
+            height: 150px;
+            background-color: hotpink;
+            margin: 10px;
+        }
+
+        .box:nth-child(1) ul {
+            display: flex;
+            /*主轴对齐方式*/
+            justify-content: flex-start;/*起点对齐*/
+        }
+
+        .box:nth-child(2) ul {
+            display: flex;
+            /*主轴对齐方式*/
+            justify-content: flex-end;/*终点对齐*/
+        }
+
+        .box:nth-child(3) ul {
+            display: flex;
+            /*主轴对齐方式*/
+            justify-content: center;/*居中对齐*/
+        }
+
+        .box:nth-child(4) ul {
+            display: flex;
+            /*主轴对齐方式*/
+            justify-content: space-around;/*平分*/
+        }
+
+        .box:nth-child(5) ul {
+            display: flex;
+            /*主轴对齐方式*/
+            justify-content: space-between;/*两端对齐*/
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h4>主轴对齐方式： justify-content: flex-start;</h4>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h4>主轴对齐方式： justify-content: flex-end;</h4>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h4>主轴对齐方式： justify-content: center;</h4>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h4>主轴对齐方式： justify-content: space-around;</h4>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h4>主轴对齐方式： justify-content: space-between;</h4>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+
+</body>
+</html>

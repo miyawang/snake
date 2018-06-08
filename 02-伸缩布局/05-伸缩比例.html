@@ -1,0 +1,89 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box {
+            width: 1000px;
+            margin: 50px auto;
+            background-color: #fff;
+        }
+        ul {
+            border: 1px solid red;
+        }
+
+        li {
+            width: 150px;
+            height: 150px;
+            background-color: hotpink;
+            margin: 10px;
+        }
+
+        .box:nth-child(1) ul {
+            display: flex;
+
+        }
+
+        .box:nth-child(1) ul li:nth-child(1) {
+            flex: 1; /*设置子元素占父盒子比例*/
+        }
+
+        .box:nth-child(1) ul li:nth-child(2) {
+            flex: 1; /*设置子元素占父盒子比例*/
+        }
+
+        .box:nth-child(1) ul li:nth-child(3) {
+            flex: 1; /*设置子元素占父盒子比例*/
+        }
+
+
+        .box:nth-child(2) ul {
+            display: flex;
+
+        }
+
+        .box:nth-child(2) ul li:nth-child(1) {
+            flex: 1; /*设置子元素占父盒子比例*/
+        }
+
+        .box:nth-child(2) ul li:nth-child(2) {
+            /*不参与比例划分的盒子，不设置flex属性即可*/
+        }
+
+        .box:nth-child(2) ul li:nth-child(3) {
+            flex: 2; /*设置子元素占父盒子比例*/
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <h4>比例划分： flex</h4>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h4>不参与比例划分： flex</h4>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+
+</body>
+</html>
