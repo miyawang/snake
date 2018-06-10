@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="写轮眼.css"/>
+    <style>
+        .amaterasu{
+            margin-top: 100px;
+            width: 183px;
+            height: 173px;
+            background: url("Amaterasu.png") no-repeat;
+            border: none;
+            border-radius: 113px 204px 128px 59px;
+           box-shadow: 10px 5px 70px 30px #f0f0f0 inset;
+            transform: rotate(-135deg);
+            animation:animate-tail 5s steps(10) infinite;
+
+        }
+        @keyframes animate-tail{
+            0%{background-position:-15px 0;}
+            100%{background-position:0 0;}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--左眼开始-->
+    <div class="eyesBoxs pullLeft">
+        <!--轮廓开始-->
+        <div class="profile skewLeft"></div>
+        <div class="shadow skewLeft"></div>
+        <!--轮廓结束-->
+        <div class="basic ani-narrow"></div>
+        <!--写轮眼开始-->
+        <div class="eyes ani-zoom">
+            <div class="line">
+                <!--三勾玉-->
+                <div class="hook ani-rotateHook">
+                    <span class="bar"><b></b></span>
+                    <span class="bar"><b></b></span>
+                    <span class="bar"><b></b></span>
+                </div>
+                <!--万花筒 天照！-->
+                <div class="tube ani-rotateTube">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <!--end-->
+            </div>
+        </div>
+
+        <!--写轮眼结束-->
+        <!--为了永恒的光明 sasiki把你的眼睛给本王吧，轮回眼 开！-->
+        <div class="trans skewLeft">
+            <span class="bar ani-shadow"></span>
+        </div>
+        <!--轮回眼结束-->
+    </div>
+    <!--左眼结束-->
+
+    <!--右眼开始-->
+    <div class="eyesBoxs pullRight">
+        <!--轮廓开始-->
+        <div class="profile skewRight"></div>
+        <div class="shadow skewRight"></div>
+        <!--轮廓结束-->
+        <div class="basic ani-narrow"></div>
+        <!--写轮眼开始-->
+        <div class="eyes ani-zoom">
+            <div class="line">
+                <!--三勾玉-->
+                <div class="hook ani-rotateHook">
+                    <span class="bar"><b></b></span>
+                    <span class="bar"><b></b></span>
+                    <span class="bar"><b></b></span>
+                </div>
+                <!--万花筒 无限月读-->
+                <div class="tube ani-rotateTube">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <!--end-->
+            </div>
+        </div>
+        <!--写轮眼结束-->
+        <!--轮回眼 死吧！Nanito 地爆天星-->
+        <div class="trans skewRight">
+            <span class="bar ani-shadow"></span>
+        </div>
+        <!--轮回眼结束-->
+    </div>
+    <!--右眼结束-->
+</div>
+
+</body>
+</html>
