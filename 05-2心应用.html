@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .heart{
+            width: 200px;
+            height: 300px;
+            margin:100px auto;
+            position: relative;
+        }
+
+        .heart::before,
+        .heart::after{
+            content:"李宇光";
+            position: absolute;
+            left:0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            border-radius: 100px 100px 0 0;
+            text-align: center;
+            color:yellow;
+            line-height: 100px;
+            transform:rotate(-45deg);
+        }
+
+        .heart::after{
+            content:"李狗蛋";
+            left:71px;
+            transform:rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="heart"></div>
+</body>
+</html>
