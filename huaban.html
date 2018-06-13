@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>画板</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #canvas {
+      background-color: green;
+      /* height: 100vh; */
+      /* inline-block元素  无法更改display  */
+    }
+    button {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+  <button>橡皮擦</button>
+  <script>    
+    var canvas = document.querySelector('#canvas');
+    var context = canvas.getContext('2d');
+    
+    xxx();
+
+    window.onresize = function () {
+      xxx();
+    }
+
+    function xxx() {
+      var pageWidth = document.documentElement.clientWidth;
+      var pageHeight = document.documentElement.clientHeight;
+      canvas.width = pageWidth;
+      canvas.height = pageHeight;
+    }
+
+
+    var painting = false;
+    var lastPoint = { x: undefined, y: undefined }
+    canvas.onmousedown = function (aaa) {
+      painting = true;
+      //相对于视口的位置 而不是相对于canvas
+      var x = aaa.clientX;
+      var y = aaa.clientY;
+      lastPoint = { x: x, y: y }
+      // drawCircle(x, y, 1);
+    }
+    canvas.onmousemove = function (aaa) {
+      if (painting) {
+        var x = aaa.clientX;
+        var y = aaa.clientY;
+        var newPoint = { x: x, y: y }
+        // drawCircle(x, y, 1);
+        drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y);
+        lastPoint = newPoint;
+      }
+    }
+    canvas.onmouseup = function (aaa) {
+      painting = false;
+    }
+    function drawCircle(x, y, radius) {
+      context.beginPath();
+      context.fillStyle = 'black';
+      context.arc(x, y, radius, 0, Math.PI * 2);
+      context.fill();
+    }
+    function drawLine(x1, y1, x2, y2) {
+      context.beginPath();
+      context.strokeStyle = 'black';
+      context.lineWidth = 5;
+      context.moveTo(x1, y1);
+      context.lineTo(x2, y2);
+      context.stroke();
+      context.closePath();
+    }
+
+    // eraser
+
+    var usingEraser = false;
+    eraser.onclick = function(){
+      usingEraser = !usingEraser;
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>
