@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div></div>
+<!-- zepto 的一大特性, 可以进行定制功能 -->
+<!-- 事件模块 -->
+<!-- 动画模块 -->
+<!--<script src="zepto.js"></script>-->
+<!--<script src="event.js"></script>-->
+<!--<script src="fx.js"></script>-->
+
+<script src="zepto.min.js"></script>
+
+<script>
+
+  // 使用方式和 jquery 一样
+//  console.log($('div'));
+
+  $('div').width(200).height(200).css("backgroundColor", "pink");
+
+  $('div').on("click", function() {
+
+    $('div').animate( { width: 400, height: 400 } );
+
+  })
+
+</script>
+
+</body>
+</html>
