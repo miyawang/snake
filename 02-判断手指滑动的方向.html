@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+
+  </style>
+</head>
+<body>
+
+<div></div>
+
+<script>
+  // 判断左滑动, 还是右滑动
+  var div = document.querySelector("div");
+
+  // 记录手指触摸开始的坐标
+  // changedTouches
+  // targetTouches
+  // touches
+  var startX = 0;
+  div.addEventListener("touchstart", function( e ) {
+    startX = e.touches[0].clientX;
+  });
+
+  div.addEventListener("touchmove", function( e ) {
+    console.log(e )
+  });
+
+  // 离开屏幕需要计算, 移动的距离
+  div.addEventListener("touchend", function( e ) {
+    var distanceX = e.changedTouches[0].clientX - startX;
+    console.log( distanceX );
+    if ( distanceX > 0 ) {
+      console.log( "向右滑动" );
+    }
+    if ( distanceX < 0 ) {
+      console.log( "向左滑动" );
+    }
+  });
+
+
+
+
+</script>
+
+</body>
+</html>
