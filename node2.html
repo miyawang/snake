@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .red {
+    color: red;
+  }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li id="item1">1</li>
+    <li id="item2">2</li>
+    <li id="item3">3</li>
+    <li id="item4">4</li>
+    <li id="item5">5</li>
+  </ul>
+  <script>
+    window.jQuery = function (nodeOrSelector) {
+      let node;
+      if(typeof nodeOrSelector === 'string'){
+        node = document.querySelector(nodeOrSelector);
+      }else{
+        node = nodeOrSelector;
+      }
+      return {
+        getSiblings: function () {
+          var allChildren = node.parentNode.children;
+          var array = { length: 0 }
+          for (let i = 0; i < allChildren.length; i++) {
+            if (allChildren[i] !== node) {
+              array[array.length] = allChildren[i];
+              array.length += 1;
+            }
+          }
+          return array;
+        },
+        addClass: function (classes) {
+          classes.forEach((value) => node.classList.add(value));
+        }
+      }
+    }
+    var node2 = jQuery('ul>li:nth-child(2)');
+    node2.getSiblings();
+    node2.addClass(['red', 'b', 'c']);
+    console.log(node2.getSiblings());
+    
+    // item3.getSiblings.call(item3);
+    // item3.addClass.call(item3, ['a', 'b', 'c']);
+  </script>
+</body>
+
+</html>
